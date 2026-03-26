@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS raw_data.sales(
 	date DATE,
 	person_name VARCHAR,
 	phone VARCHAR,
-	discount_percent SMALLINT,
+	discount SMALLINT,
 	brand_origin VARCHAR
 );
 
