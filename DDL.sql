@@ -1,7 +1,6 @@
 -- Создаем схему raw_data.
 CREATE SCHEMA IF NOT EXISTS raw_data;
 
-
 -- Создаем таблицу для хранения сырых данных.
 CREATE TABLE IF NOT EXISTS raw_data.sales(
 	id INTEGER,
@@ -15,17 +14,14 @@ CREATE TABLE IF NOT EXISTS raw_data.sales(
 	brand_origin VARCHAR
 );
 
-
 -- Создаем схему car_shop.
 CREATE SCHEMA IF NOT EXISTS car_shop;
-
 
 -- Создаем таблицу для хранения цвета авто.
 CREATE TABLE car_shop.colors(
 	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	name VARCHAR NOT NULL UNIQUE
 );
-
 
 -- Создаем таблицу для хранения данных о клиентах.
 CREATE TABLE car_shop.clients(
@@ -35,13 +31,11 @@ CREATE TABLE car_shop.clients(
 	CONSTRAINT clients_unique UNIQUE(name, phone)
 );
 
-
 -- Создаем таблицу для хранения страны производителя авто.
 CREATE TABLE car_shop.brand_origin(
 	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	name VARCHAR NOT NULL
 );
-
 
 -- Создаем таблицу для хранения брендов авто.
 CREATE TABLE car_shop.brand_name(
@@ -49,7 +43,6 @@ CREATE TABLE car_shop.brand_name(
 	name VARCHAR NOT NULL UNIQUE,
 	brand_origin_id INTEGER REFERENCES car_shop.brand_origin(id)
 ); 
-
 
 -- Создаем таблицу для хранения данных о авто.
 CREATE TABLE car_shop.autos(
@@ -59,14 +52,12 @@ CREATE TABLE car_shop.autos(
 	brand INTEGER REFERENCES car_shop.brand_name(id)
 );
 
-
 -- Создаем таблицу для связи (многие ко многим) авто с цветом.
 CREATE TABLE car_shop.color_autos(
 	id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	auto_id INTEGER REFERENCES car_shop.autos(id) NOT NULL,
 	color_id INTEGER REFERENCES car_shop.colors(id) NOT NULL
 );
-
 
 -- Создаем таблицу для хранения данных о продаже авто.
 CREATE TABLE car_shop.sales(

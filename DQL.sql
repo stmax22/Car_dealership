@@ -2,7 +2,6 @@
 SELECT (COUNT(id) - COUNT(gasoline_consumption)) / (COUNT(id)::REAL / 100) AS nulls_percentage_gasoline_consumption
 FROM car_shop.autos AS a;
 
-
 -- 2. Запрос, который покажет название бренда и среднюю цену его автомобилей в разбивке по всем годам с учётом скидки.
 SELECT
 	bn.name,

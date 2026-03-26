@@ -2,7 +2,6 @@
 COPY raw_data.sales FROM 'D:\Car_dealership\cars.csv'
 WITH (FORMAT CSV, HEADER, NULL 'null');
 
-
 -- Заполняем таблицу цветами авто.
 INSERT INTO car_shop.colors(
 	name
@@ -10,7 +9,6 @@ INSERT INTO car_shop.colors(
 SELECT DISTINCT
 	SPLIT_PART(auto, ', ', -1)
 FROM raw_data.sales;
-
 
 -- Заполняем таблицу данными о клиентах.
 INSERT INTO car_shop.clients(
@@ -22,7 +20,6 @@ SELECT DISTINCT
 	phone
 FROM raw_data.sales;
 
-
 -- Заполняем таблицу данными о странах производителей авто.
 INSERT INTO car_shop.brand_origin(
 	name
@@ -31,7 +28,6 @@ SELECT DISTINCT
 	brand_origin
 FROM raw_data.sales
 WHERE brand_origin IS NOT NULL;
-
 
 -- Заполняем таблицу данными брендов.
 INSERT INTO car_shop.brand_name(
@@ -43,7 +39,6 @@ SELECT DISTINCT
 	b.id
 FROM raw_data.sales AS s
 LEFT JOIN car_shop.brand_origin AS b ON b.name = s.brand_origin;
-
 
 -- Заполняем таблицу данными о авто.
 INSERT INTO car_shop.autos(
@@ -58,7 +53,6 @@ SELECT DISTINCT
 FROM raw_data.sales AS s
 LEFT JOIN car_shop.brand_name AS b ON b.name = SPLIT_PART(SPLIT_PART(s.auto, ', ', 1), ' ', 1);
 
-
 -- Заполняем таблицу id-шниками авто и цветом этого авто.
 INSERT INTO car_shop.color_autos(
 	auto_id,
@@ -71,7 +65,6 @@ FROM raw_data.sales AS s
 LEFT JOIN car_shop.brand_name AS b ON b.name = SPLIT_PART(SPLIT_PART(s.auto, ', ', 1), ' ', 1)
 LEFT JOIN car_shop.autos AS a ON s.auto LIKE (b.name || ' ' || a.model_name || '%')
 LEFT JOIN car_shop.colors AS c ON c.name = SPLIT_PART(s.auto, ', ', -1);
-
 
 -- Заполняем таблицу данными о продаже авто.
 INSERT INTO car_shop.sales(
