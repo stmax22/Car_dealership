@@ -80,4 +80,4 @@
 ![](https://github.com/stmax22/Car_dealership/blob/4250a81592d4a0f5ed91f7681ac6dbb9fff2d7e1/diagram.png)
 
 ## Запросы к данным
-Файл [DQL.sql](https://github.com/stmax22/Car_dealership/blob/4250a81592d4a0f5ed91f7681ac6dbb9fff2d7e1/DQL.sql) содержит запросы к данными для аналитики.
+Файл [DQL.sql](https://github.com/stmax22/Car_dealership/blob/4250a81592d4a0f5ed91f7681ac6dbb9fff2d7e1/DQL.sql) содержит запросы к данным для аналитики.
